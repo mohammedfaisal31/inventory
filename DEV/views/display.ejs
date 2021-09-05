@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Items </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<h3>THE INVENTORY </h3>
+
+<% if(items.length == 0){%>
+	<div class="alert alert-danger " role="alert">
+  Empty inventory, Please add items!!
+</div>
+<%}else { %>
+
+<% for (var i =0; i <items.length;  i++ ) { %>
+	
+	
+
+<form method="POST" action="/display"> 
+	<div class="card">
+		<div class="card-header">
+			<b><%=items[i].iname%></b> <i>id:#<%=items[i].id%></i>
+		</div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p><%=items[i].idesc%></p>
+      <footer class="blockquote-footer">Price <cite title="Source Title">	&#8377;<%=items[i].price%></cite></footer>
+    </blockquote>
+  </div>
+  </div>
+  <button type="submit"  name="<%=items[i].id%>" id=""  class="btn btn-danger delete">DELETE</button>
+  </form>
+<%}%>
+<% } %>
+<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script> <script src="js/index.js"> </script>
+<button type="button" class="btn btn-success go-back" onclick="window.location = '/' ">Go back</button>
+  
+</body>
+</html>
